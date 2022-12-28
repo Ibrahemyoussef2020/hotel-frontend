@@ -1,0 +1,9 @@
+.Footer{
+    background:#0f3460;
+}
+.Footer hr{
+    color: #fff;
+}
+.Footer .fa-brands , .Footer .fa-solid{
+    font-size:1.5rem ;
+}

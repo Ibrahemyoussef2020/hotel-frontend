@@ -1,0 +1,70 @@
+.Card .layout {
+    position: absolute;
+    transform-origin:bottom left;
+    bottom:22px; left: 0;
+    height: calc(100% - 20px);
+    background:#00000057; 
+}
+
+.room-drop-control{
+    z-index: 5;
+}
+
+.room-dropDown{
+    transition: transform .2s linear;
+    transform-origin: top right;
+    position: absolute;
+    top: 0; left: 0;
+    padding-top: 1.5rem;
+    padding-left: 4rem;
+    background: #929292;
+}
+.drop-btn{
+    background: transparent;
+}
+.up{
+    animation: upAnimation .2s linear;
+    transform: scale3d(1,0,1);
+}
+.down{
+    animation: downAnimation .2s linear;
+    transform: scale3d(1,1,1);
+}
+
+/* animations */
+
+@keyframes upAnimation {
+    0%{
+        transform:scale3d(1,1,1)   
+    }
+    25%{
+        transform:scale3d(1,.9,1)
+    }
+    50%{
+        transform:scale3d(1,.6,1)
+    }
+    75%{
+        transform:scale3d(1,.3,1)
+    }
+    100%{
+        transform:scale3d(1,0,1)
+    }
+}
+
+@keyframes downAnimation {
+    0%{
+        transform:scale3d(1,0,1)   
+    }
+    25%{
+        transform:scale3d(1,.3,1)
+    }
+    50%{
+        transform:scale3d(1,.6,1)
+    }
+    75%{
+        transform:scale3d(1,.9,1)
+    }
+    100%{
+        transform:scale3d(1,1,1)
+    }
+}

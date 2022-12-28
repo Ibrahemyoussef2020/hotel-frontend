@@ -1,0 +1,22 @@
+.Room-details{
+    min-height: 300px;
+    margin: 5rem 0 2rem 0 !important;
+}
+
+.details p{
+    font-size: 15px;
+}
+
+.extracts > div:first-child{
+    height: 25px;
+}
+
+.extracts > div:last-child{
+    height:calc(100% - 25px);
+}
+
+.Room-details ul{
+    padding-left: 0 !important;
+}
+
+
