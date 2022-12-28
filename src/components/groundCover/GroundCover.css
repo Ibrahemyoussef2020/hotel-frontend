@@ -1,0 +1,5 @@
+.GroundCover{
+    height: 100vh;
+    background-image: url('../../../public/images/defaultBcg.jpg');
+    background-size: cover;
+}

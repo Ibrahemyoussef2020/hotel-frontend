@@ -13,7 +13,7 @@ const fetchData = async (data,setData)=> {
 
 const fetchSlectedData = async (data,setData,id)=> {
     return await api.get(`${data}/${id}`).then(res=> {
-     setData(res?.data)
+     setData(res.data)
     }) 
  }
 

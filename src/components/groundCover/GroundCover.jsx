@@ -1,5 +1,6 @@
 import UnderLine from '../../utilities/underLine'
 
+import './GroundCover.css'
 
 const GroundCover = ({title,children}) => {
    return <div className="GroundCover py-2">

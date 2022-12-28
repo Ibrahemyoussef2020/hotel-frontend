@@ -4,6 +4,7 @@ import UnderLine from "../../utilities/underLine"
 
 
 const ErrorPage = () => {
+
   return(
     <GroundCover title='404'>
        <NavLink className='text-white' to='/'>Back to Home</NavLink> 

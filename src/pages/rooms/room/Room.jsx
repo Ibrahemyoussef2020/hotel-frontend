@@ -3,7 +3,7 @@ import { NavLink,useNavigate } from 'react-router-dom';
 
 import { addId } from '../../../redux/slices/RoomBookSlice';
 import Card from '../../../components/card'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import{
   FaArrowCircleDown
@@ -20,11 +20,21 @@ const dispatch = useDispatch()
 
 const [hover,setHover] = useState(true)
 const [toggleOpen,setToggleOpen] = useState(false)
+const [hidden,setHidden] = useState('hidden')
+
+useEffect(()=>{
+ // setHidden('')
+})
 
 
    const hundle_books = async ()=>{
      dispatch(addId({id:room.id}))
      navigate('/roomBook')
+   }
+
+   const handle_drop = async ()=>{
+    setToggleOpen(toggleOpen => toggleOpen ? false : true)
+    setHidden('')
    }
 
   return (
@@ -47,12 +57,12 @@ const [toggleOpen,setToggleOpen] = useState(false)
           <div className='room-drop-control w-100 px-1 text-end bg-transparent'>
 
               <button className='drop-btn'
-                onClick={()=> setToggleOpen(toggleOpen => toggleOpen ? false : true)}>
+                onClick={handle_drop}>
                 <FaArrowCircleDown/>
               </button>
 
           </div>
-          <div className={`room-dropDown w-100 ${toggleOpen === true ? 'down' : 'up'}`}>
+          <div className={`room-dropDown ${hidden} w-100 ${toggleOpen === true ? 'down' : 'up'}`}>
             <div><small className='text-primary fw-bold'>pets : </small>  <small className='text-danger fw-bold'>{room.pets[0] === true ? 'Allowed' : 'Not Allowed'}</small></div>
             <div><small className='text-primary fw-bold'>Meals : </small>  <small className='text-danger fw-bold'> {room.freeMeals[0]  === true ? 'Allowed' : 'Not Allowed'} </small></div>
             <div><small className='text-primary fw-bold'>guests : </small>  <small className='text-danger fw-bold'> {room.guestsEnd} </small></div>

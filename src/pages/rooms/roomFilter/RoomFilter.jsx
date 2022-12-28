@@ -8,7 +8,7 @@ import './RoomFilter.css'
 
 const RoomFilter = ({rooms,setRooms}) => {
     const [allData,setAllData] = useState([])
-    const [size,setSize] = useState(100)
+
 
     useEffect(()=>{
         fetchData('rooms',setAllData)
@@ -20,13 +20,15 @@ const RoomFilter = ({rooms,setRooms}) => {
     const options = allData?.length ? [...new Set(allData.map(d => d.type))] : []
 
 
-    const data = allData.length ? allData.filter(room =>   
-            room.type.includes(filterOptions.type) &&
+    const data = allData.length ? allData.filter(room =>{ 
+            
+            return(room.type.includes(filterOptions.type) &&
             room.size >= filterOptions.minSize &&
             room.price <= filterOptions.maxPrice && 
             +room.guestsEnd >= +filterOptions.guests &&
-            room.freeMeals.includes(filterOptions.freeMeals) &&
-            room.pets.includes(filterOptions.pets)      
+            room.freeMeals.toString().includes(filterOptions.freeMeals.toString()) &&
+            room.pets.toString().includes(filterOptions.pets.toString()))
+        }      
     ) : []
 
 
@@ -35,25 +37,21 @@ const RoomFilter = ({rooms,setRooms}) => {
     }
 
     const handleFilter = async (e)=>{
-         const {name} = e.target,    
-         
-         value = e.target.type === "checkbox" ? e.target.checked : e.target.value
-
-         if(e.target.type === "range"){
-            setSize(value)
-         }
+         const {name,value} = e.target  
+             
+        console.log(value);
+        console.log(filterOptions);
 
         dispatch(addFilter({
             ...filterOptions,[name]:value     
           })) 
     }
-    
   return (
     <section className='RoomFilter row d-flex text-danger fw-bold'>
         
         <section className="col col-12 col-md-6 border-md-0    d-flex flex-column justify-content-around align-items-center bg-light px-2">
             <div className='my-4 d-flex gap-3'>
-                <label htmlFor="">choose type</label>
+                <label htmlFor="">Type</label>
                 <select 
                     name="type" id="room-type"
                     onChange={(e)=>handleFilter(e,'type')}
@@ -69,7 +67,7 @@ const RoomFilter = ({rooms,setRooms}) => {
             </div>
 
             <div className=" my-4 d-flex gap-3">
-                <label htmlFor="guests">guests : </label>
+                <label htmlFor="guests">Guests : </label>
                 <input
                     name='guests'
                     id='guests' 
@@ -82,7 +80,7 @@ const RoomFilter = ({rooms,setRooms}) => {
             </div>
 
             <div className='my-4 d-flex gap-3'>
-                <label htmlFor="maxPrice">price Range</label>
+                <label htmlFor="maxPrice">Max price</label>
                 <input
                     name="maxPrice"  
                     type="number" id="maxPrice" 
@@ -97,34 +95,41 @@ const RoomFilter = ({rooms,setRooms}) => {
 
         <section className="col col-12 col-md-6 d-flex flex-column justify-content-around align-items-center bg-light px-2">
             <div className="my-4 d-flex gap-3">
-                <label htmlFor="minSize">min size</label>
+                <label htmlFor="minSize">Min size</label>
                 <input 
                     name='minSize'
-                    id='minSize' type='range' 
+                    id='minSize' type='number' 
                     min={90} max={700} step={10}
-                    defaultValue={size}
+                    defaultValue={100}
                     onChange={(e)=>handleFilter(e,'size')}
                     onMouseUp={(e)=>filters(e)}
+                    onKeyUp={(e)=>filters(e)}    
                 />
-                <label htmlFor="minSize" className='text-secondary'>{size}</label>           
             </div>  
             <div className='my-4 d-flex gap-3'>
-                <label htmlFor="pets">Pets Allowed</label>
-                <input 
-                    name='pets' id='pets' type="checkbox"
-                    defaultValue={1} 
+                <label htmlFor="pets">Pets</label>
+                
+                <select name='pets' id='pets'
                     onChange={(e)=>handleFilter(e,'pets')}
-                    onMouseLeave={(e)=>filters(e)}  
-                />
+                    onMouseUp={(e)=>filters(e)} 
+                >
+                    <option value={false}>don't care</option>
+                    <option value={true}>care about</option>
+                    
+                </select>
+                
+
             </div>
             <div className='my-4 d-flex gap-3'>
-                <label htmlFor="freeMeals">Free Meals</label>
-                <input
-                    name='freeMeals' id='freeMeals' type="checkbox"
-                    defaultValue={1} 
+                <label htmlFor="freeMeals">Meals</label>
+                
+                <select  name='freeMeals' id='freeMeals'
                     onChange={(e)=>handleFilter(e,'freeMeals')}
-                    onMouseLeave={(e)=>filters(e)}
-                />
+                    onMouseUp={(e)=>filters(e)} 
+                >
+                    <option value={false}>all meals</option>
+                    <option value={true}>free meals</option>
+                </select>
             </div>  
         </section>
      </section>    

@@ -13,11 +13,14 @@
 .room-dropDown{
     transition: transform .2s linear;
     transform-origin: top right;
+    transform: scale3d(1,0,1);
     position: absolute;
     top: 0; left: 0;
+
     padding-top: 1.5rem;
     padding-left: 4rem;
     background: #929292;
+    display: none;
 }
 .drop-btn{
     background: transparent;
@@ -25,10 +28,15 @@
 .up{
     animation: upAnimation .2s linear;
     transform: scale3d(1,0,1);
+   display: block;
 }
 .down{
     animation: downAnimation .2s linear;
     transform: scale3d(1,1,1);
+    display: block;
+}
+.hidden{
+    visibility: hidden;
 }
 
 /* animations */
