@@ -3,12 +3,10 @@ import GroundCover from "../../components/groundCover"
 import UnderLine from "../../utilities/underLine"
 
 const HasSent = () => {
-  window.addEventListener('DOMContentLoaded',function () {
-    window.scrollTo({
-      top: 400,
-      left: 0,
-      behavior: 'smooth'
-    });
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
   });
 
   return (

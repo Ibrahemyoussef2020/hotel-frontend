@@ -31,7 +31,7 @@ const Form = () => {
   }
   return (
     <form onSubmit={(e)=>handleSubmit(e)}
-      className='Form px-2 text-center'>
+      className='Form px-2 text-center w-100'>
       <div className='name w-100 text-center fz-4 my-2 p-2'>
         <input onChange={(e)=>handleChange(e)}
         name='name' type="text" placeholder='your name'/>

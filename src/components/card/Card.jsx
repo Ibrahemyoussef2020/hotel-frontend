@@ -33,7 +33,7 @@ const Card = ({
       onMouseEnter={()=>setHover(layOut && true)}
       onMouseLeave={()=>setHover(layOut && false)}
     
-      className={`Card col col-${filter?'5':'12'} col-sm-5 col-md-3 position-relative p-0 my-3 mx-1`}>
+      className={`Card col col-${filter?'5':'11'} col-sm-5 col-md-3 position-relative p-0 my-3 mx-1`}>
 
         {children}
         
@@ -47,9 +47,9 @@ const Card = ({
             <img className='w-100' src={img} alt={title}/>
         </div>
 
-        {layOut && <div className='fw-semibold text-center'>
-          <span>{title}</span>
-        </div>}
+        {layOut && <footer className='w-100 fw-semibold text-center'>
+          <span>{title.split(' ')[0]}</span>
+        </footer>}
     </div>
   )
 }

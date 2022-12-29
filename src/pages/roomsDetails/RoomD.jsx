@@ -10,6 +10,12 @@ import Card from '../../components/card'
 import './RoomD.css'
 
 const RoomD = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+
   const navigate = useNavigate()
 
   const [selectRoom,setRoom] = useState({})

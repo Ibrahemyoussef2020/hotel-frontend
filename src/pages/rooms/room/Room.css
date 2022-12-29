@@ -24,6 +24,7 @@
 }
 .drop-btn{
     background: transparent;
+    font-size: 1.3rem;
 }
 .up{
     animation: upAnimation .2s linear;

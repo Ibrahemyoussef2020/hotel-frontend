@@ -9,8 +9,8 @@ const initialState = {
         guests:1,
         minSize:100,
         maxPrice:4000,
-        freeMeals:"false",
-        pets:"false"
+        freeMeals:false,
+        pets:false
     },
     filterData:[
         {
@@ -21,8 +21,8 @@ const initialState = {
             "guestsEnd":60,
             "price":3000,
             "size":300,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-2",
@@ -32,8 +32,8 @@ const initialState = {
             "guestsEnd":6,
             "price":250,
             "size":200,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-3",
@@ -43,8 +43,8 @@ const initialState = {
             "guestsEnd":2,
             "price":100,
             "size":150,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-4",
@@ -54,8 +54,8 @@ const initialState = {
             "guestsEnd":1,
             "price":50,
             "size":100,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-5",
@@ -65,8 +65,8 @@ const initialState = {
             "guestsEnd":50,
             "price":500,
             "size":4000,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-6",
@@ -76,8 +76,8 @@ const initialState = {
             "guestsEnd":10,
             "price":470,
             "size":300,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-7",
@@ -87,8 +87,8 @@ const initialState = {
             "guestsEnd":2,
             "price":150,
             "size":200,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-8",
@@ -98,8 +98,8 @@ const initialState = {
             "guestsEnd":1,
             "price":100,
             "size":120,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-9",
@@ -109,8 +109,8 @@ const initialState = {
             "guestsEnd":60,
             "price":3000,
             "size":300,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-10",
@@ -120,8 +120,8 @@ const initialState = {
             "guestsEnd":6,
             "price":250,
             "size":200,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-11",
@@ -131,8 +131,8 @@ const initialState = {
             "guestsEnd":2,
             "price":100,
             "size":150,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-12",
@@ -142,8 +142,8 @@ const initialState = {
             "guestsEnd":1,
             "price":50,
             "size":100,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-13",
@@ -153,8 +153,8 @@ const initialState = {
             "guestsEnd":50,
             "price":500,
             "size":4000,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         { 
             "id":"room-14",
@@ -164,8 +164,8 @@ const initialState = {
             "guestsEnd":10,
             "price":470,
             "size":300,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-15",
@@ -175,8 +175,8 @@ const initialState = {
             "guestsEnd":2,
             "price":150,
             "size":200,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-16",
@@ -186,8 +186,8 @@ const initialState = {
             "guestsEnd":1,
             "price":100,
             "size":120,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-17",
@@ -197,8 +197,8 @@ const initialState = {
             "guestsEnd":45,
             "price":400,
             "size":3300,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-18",
@@ -208,8 +208,8 @@ const initialState = {
             "guestsEnd":1,
             "price":600,
             "size":400,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ true , false]
         },
         {
             "id":"room-19",
@@ -219,8 +219,8 @@ const initialState = {
             "guestsEnd":6,
             "price":250,
             "size":200,
-            "freeMeals": [ "false" , "false"],
-            "pets": [ "false" , "false"]
+            "freeMeals": [ false , false],
+            "pets": [ false , false]
         },
         {
             "id":"room-20",
@@ -230,8 +230,8 @@ const initialState = {
             "guestsEnd":2,
             "price":400,
             "size":250,
-            "freeMeals": [ "true" , "false"],
-            "pets": [ "true" , "false"]
+            "freeMeals": [ true , false],
+            "pets": [ true , false]
         }
     ]    
 }

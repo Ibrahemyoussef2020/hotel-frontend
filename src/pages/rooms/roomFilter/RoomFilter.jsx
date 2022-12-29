@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useRef } from 'react'
 import { useSelector,useDispatch} from 'react-redux'
 import {addFilter,addData} from '.././../../redux'
 
@@ -8,11 +8,10 @@ import './RoomFilter.css'
 
 const RoomFilter = ({rooms,setRooms}) => {
     const [allData,setAllData] = useState([])
+    const [size,setSize] = useState(100)
 
+    const refDispatch = useRef()
 
-    useEffect(()=>{
-        fetchData('rooms',setAllData)
-    },[])
 
     const {filterOptions,filterData} = useSelector(state => state.RoomsFilter)
     const dispatch = useDispatch()
@@ -26,10 +25,14 @@ const RoomFilter = ({rooms,setRooms}) => {
             room.size >= filterOptions.minSize &&
             room.price <= filterOptions.maxPrice && 
             +room.guestsEnd >= +filterOptions.guests &&
-            room.freeMeals.toString().includes(filterOptions.freeMeals.toString()) &&
-            room.pets.toString().includes(filterOptions.pets.toString()))
+            room.freeMeals.includes(filterOptions.freeMeals) &&
+            room.pets.includes(filterOptions.pets))
         }      
     ) : []
+
+    useEffect(()=>{
+        fetchData('rooms',setAllData)
+    },[])
 
 
     const filters = ()=>{
@@ -37,16 +40,23 @@ const RoomFilter = ({rooms,setRooms}) => {
     }
 
     const handleFilter = async (e)=>{
-         const {name,value} = e.target  
+         const {name} = e.target  
+         
+         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
              
-        console.log(value);
-        console.log(filterOptions);
+        if(e.target.type === 'range'){
+            setSize(value)
+        }
 
         dispatch(addFilter({
             ...filterOptions,[name]:value     
           })) 
+
+        setTimeout(()=>refDispatch.current.click(),500)  
+
     }
   return (
+    <>
     <section className='RoomFilter row d-flex text-danger fw-bold'>
         
         <section className="col col-12 col-md-6 border-md-0    d-flex flex-column justify-content-around align-items-center bg-light px-2">
@@ -55,7 +65,6 @@ const RoomFilter = ({rooms,setRooms}) => {
                 <select 
                     name="type" id="room-type"
                     onChange={(e)=>handleFilter(e,'type')}
-                    onMouseUp={(e)=>filters(e)}
                     >
                     <option value='all'>all</option>
                 { options.map(option => 
@@ -74,8 +83,6 @@ const RoomFilter = ({rooms,setRooms}) => {
                     type="number" min={1} max={60}
                     defaultValue={1} 
                     onChange={(e)=>handleFilter(e,'guests')} 
-                    onMouseUp={(e)=>filters(e)}
-                    onKeyUp={(e)=>filters(e)}
                 />
             </div>
 
@@ -87,8 +94,6 @@ const RoomFilter = ({rooms,setRooms}) => {
                     min={50} max={4000} step={10}
                     defaultValue={4000} 
                     onChange={(e)=>handleFilter(e,'price')}
-                    onMouseUp={(e)=>filters(e)}
-                    onKeyUp={(e)=>filters(e)} 
                 />
             </div> 
         </section>
@@ -98,41 +103,40 @@ const RoomFilter = ({rooms,setRooms}) => {
                 <label htmlFor="minSize">Min size</label>
                 <input 
                     name='minSize'
-                    id='minSize' type='number' 
+                    id='minSize' type='range' 
                     min={90} max={700} step={10}
-                    defaultValue={100}
+                    defaultValue={size}
                     onChange={(e)=>handleFilter(e,'size')}
                     onMouseUp={(e)=>filters(e)}
                     onKeyUp={(e)=>filters(e)}    
                 />
+                <label htmlFor='minSize' className='text-secondary'>{size}</label>
             </div>  
             <div className='my-4 d-flex gap-3'>
                 <label htmlFor="pets">Pets</label>
                 
-                <select name='pets' id='pets'
-                    onChange={(e)=>handleFilter(e,'pets')}
-                    onMouseUp={(e)=>filters(e)} 
-                >
-                    <option value={false}>don't care</option>
-                    <option value={true}>care about</option>
-                    
-                </select>
-                
-
+                <label htmlFor="freeMeals">Meals</label> 
+                <input  name='freeMeals' id='freeMeals'
+                    type='checkbox'
+                    onChange={(e)=>handleFilter(e,'freeMeals')}
+                />
             </div>
             <div className='my-4 d-flex gap-3'>
-                <label htmlFor="freeMeals">Meals</label>
-                
-                <select  name='freeMeals' id='freeMeals'
+                <label htmlFor="freeMeals">Meals</label> 
+                <input  name='freeMeals' id='freeMeals'
+                    type='checkbox'
                     onChange={(e)=>handleFilter(e,'freeMeals')}
-                    onMouseUp={(e)=>filters(e)} 
-                >
-                    <option value={false}>all meals</option>
-                    <option value={true}>free meals</option>
-                </select>
+                />
             </div>  
         </section>
-     </section>    
+     </section>
+     <div className='text-center py-4 d-none'>
+        <button ref={refDispatch}
+                 onClick={filters}>
+                Show Results
+        </button>
+     </div>
+     </>    
 )}
 
 export default RoomFilter

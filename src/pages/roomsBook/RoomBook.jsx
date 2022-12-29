@@ -12,6 +12,12 @@ import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 
 const RoomBook = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+  
   const [selectRoom,setRoom] = useState({})
 
   const {id} = useSelector(state => state.RoomBook)
@@ -36,8 +42,8 @@ const RoomBook = () => {
             </button>
           </Cover>
 
-        <div className='Room-details row justify-content-between px-4'>               
-          <article className='details col col-12 col-md-6'>
+        <div className='Room-details row justify-content-around'>               
+          <article className='details col col-12 col-md-5'>
             <div className='fw-semibold mb-4'>{<Form />}</div>
           </article>
 
