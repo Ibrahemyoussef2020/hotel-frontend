@@ -8,8 +8,9 @@ const LayOut = () => {
   const [loading , setLoading] = useState(true)
 
   useEffect(()=>{
-    setLoading(false)
+    setTimeout(()=>setLoading(false),4000)
   },[loading])
+
   const OutPut = loading ? <div className='full-center'>
   <ThreeDots 
   height="80" 
