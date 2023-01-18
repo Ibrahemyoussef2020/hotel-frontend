@@ -11,5 +11,4 @@ const LayOut = () => {
     </>
   )
 }
-
 export default LayOut

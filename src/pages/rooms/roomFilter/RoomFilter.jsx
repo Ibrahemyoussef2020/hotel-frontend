@@ -114,11 +114,9 @@ const RoomFilter = ({rooms,setRooms}) => {
             </div>  
             <div className='my-4 d-flex gap-3'>
                 <label htmlFor="pets">Pets</label>
-                
-                <label htmlFor="freeMeals">Meals</label> 
-                <input  name='freeMeals' id='freeMeals'
+                <input  name='pets' id='pets'
                     type='checkbox'
-                    onChange={(e)=>handleFilter(e,'freeMeals')}
+                    onChange={(e)=>handleFilter(e,'pets')}
                 />
             </div>
             <div className='my-4 d-flex gap-3'>
