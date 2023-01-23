@@ -12,10 +12,12 @@ import ServesItem from '../servesItem'
 import UnderLine from '../../../utilities/underLine';
 
 const ServesContainer = () => {
+    const [loading,setLoading] = useState(true)
     const [data,setData] = useState([])
 
     useEffect(()=>{
         fetchData('serveses',setData)
+        setTimeout(()=>setLoading(false),500)
     },[])
 
 
@@ -37,6 +39,7 @@ const ServesContainer = () => {
                 ]
             return <Fragment key ={serve.id}>
                 <ServesItem 
+                    loading={loading}
                     id={serve.id}
                     title={serve.title}
                     summary={serve.summary}
