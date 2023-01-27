@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import {addDetailsId} from '../../redux'
 
 import './Card.css'
 
 const Card = ({
-  loading,
   id,
   title,
   price,
@@ -29,16 +26,6 @@ const Card = ({
   const room_details = ()=>{
     dispatch(addDetailsId({id:id}))
     navigate('/roomDetails')
-  }
-
-  if(loading){
-    return(
-      <div className={`Card col col-${filter?'5':'11'} col-sm-5 col-md-3 position-relative p-0 my-3 mx-1 bg-inhrit`}>
-       <div className='Skeleton-container'>
-            <Skeleton height={200} width={'100%'}/>
-        </div>
-      </div>
-    )
   }
 
   return (
